@@ -1,0 +1,25 @@
+COMANDOS EXECUTADOS
+
+PROJETO ORIGINAL COM FONTES DO LIVRO
+----------------------------------
+https://github.com/logicadojogo/fontes
+----------------------------------
+
+INSTALACAO DO MAVEN
+----------------------------------
+sudo mv apache-maven-3.6.3 /opt
+
+cd ~/
+vi .bashrc
+export PATH="/opt/apache-maven-3.6.3/bin:$PATH"
+
+source ~/.bashrc
+mvn -v
+---------------------------------- 
+
+CRIACAO DO PROJETO E DO MODULO DO SPACE INVADERS
+----------------------------------
+mvn archetype:generate -DgroupId=me.brunosantana -DartifactId=a-logica-do-jogo
+cd a-logica-do-jogo/
+mvn archetype:generate -DgroupId=me.brunosantana -DartifactId=space-invaders
+----------------------------------
