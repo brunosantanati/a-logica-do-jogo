@@ -22,4 +22,8 @@ CRIACAO DO PROJETO E DO MODULO DO SPACE INVADERS
 mvn archetype:generate -DgroupId=me.brunosantana -DartifactId=a-logica-do-jogo
 cd a-logica-do-jogo/
 mvn archetype:generate -DgroupId=me.brunosantana -DartifactId=space-invaders
+mvn archetype:generate -DgroupId=me.brunosantana -DartifactId=fundamental -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+
+http://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 ----------------------------------

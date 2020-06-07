@@ -100,5 +100,6 @@
 		</dependency>
 	</dependencies>
 <modules>  <module>space-invaders</module>
+    <module>fundamental</module>
   </modules>
 </project>
