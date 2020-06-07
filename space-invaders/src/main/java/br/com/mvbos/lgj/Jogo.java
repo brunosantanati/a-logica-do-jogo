@@ -1,6 +1,7 @@
 package br.com.mvbos.lgj;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -96,7 +97,7 @@ public class Jogo extends JFrame {
 
 	// Elementos do jogo
 
-	private int vidas = 3;
+	private int vidas = 5;
 
 	// Desenharemos mais dois tanques na base da tela
 	private Elemento vida = new Tanque();
@@ -188,8 +189,9 @@ public class Jogo extends JFrame {
 
 	public void iniciarJogo() {
 		long prxAtualizacao = 0;
+		boolean jogoTerminou = false;
 
-		while (true) {
+		while (jogoTerminou == false) {
 			if (System.currentTimeMillis() >= prxAtualizacao) {
 
 				g2d.setColor(Color.BLACK);
@@ -337,6 +339,7 @@ public class Jogo extends JFrame {
 
 					if (Util.colide(tiroChefe, tanque)) {
 						vidas--;
+						jogoTerminou = terminarJogoSeVidasAcabaram();
 						tiroChefe.setAtivo(false);
 
 					} else if (tiroChefe.getPy() > tela.getHeight() - linhaBase - tiroChefe.getAltura()) {
@@ -352,6 +355,7 @@ public class Jogo extends JFrame {
 
 						if (Util.colide(tiros[i], tanque)) {
 							vidas--;
+							jogoTerminou = terminarJogoSeVidasAcabaram();
 							tiros[i].setAtivo(false);
 
 						} else if (tiros[i].getPy() > tela.getHeight() - linhaBase - tiros[i].getAltura())
@@ -397,7 +401,24 @@ public class Jogo extends JFrame {
 				prxAtualizacao = System.currentTimeMillis() + FPS;
 			}
 		}
+		
+		mostrarGameOver();
 
+	}
+	
+	public boolean terminarJogoSeVidasAcabaram() {
+		if(vidas == 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void mostrarGameOver() {
+		texto.setCor(Color.GREEN);
+		texto.setFonte(new Font("Tahoma", Font.PLAIN, 32));
+		texto.desenha(g2d, "Game Over", 170, 340);
+		tela.repaint();
 	}
 
 	public void addTiroInimigo(Elemento inimigo, Elemento tiro) {
